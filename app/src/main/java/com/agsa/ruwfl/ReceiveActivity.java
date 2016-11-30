@@ -3,6 +3,7 @@ package com.agsa.ruwfl;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ public class ReceiveActivity extends AppCompatActivity {
         mButtonAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgress(true);
                 saveDraw();
             }
         });
@@ -107,8 +109,9 @@ public class ReceiveActivity extends AppCompatActivity {
                 new SuccessObject() {
                     @Override
                     public void onSuccess(Object object) {
-                        showProgress(false);
-                        Toast.makeText(getApplicationContext(), object.toString(), Toast.LENGTH_SHORT).show();
+                        Intent mIntent = new Intent(getApplicationContext(), AgentSearchActivity.class);
+                        startActivity(mIntent);
+                        finish();
                     }
 
                     @Override

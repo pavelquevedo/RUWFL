@@ -18,6 +18,7 @@ public class PolizaModel implements Serializable {
     private int idCaso;
     private Date fecProceso;
     private long nroPol;
+    private int idPv;
     private String txtEndoso;
     private String txtNomSuc;
     private String txtAsegurado;
@@ -26,7 +27,7 @@ public class PolizaModel implements Serializable {
     public PolizaModel() {
     }
 
-    public PolizaModel(int codAseg, int codSuc, int codRamo, String txtRamo, int codTipoAgente, int codAgente, int idCaso, Date fecProceso, long nroPol, String txtEndoso, String txtNomSuc, String txtAsegurado) {
+    public PolizaModel(int codAseg, int codSuc, int codRamo, String txtRamo, int codTipoAgente, int codAgente, int idCaso, Date fecProceso, long nroPol, int idPv, String txtEndoso, String txtNomSuc, String txtAsegurado) {
         this.codAseg = codAseg;
         this.codSuc = codSuc;
         this.codRamo = codRamo;
@@ -36,6 +37,7 @@ public class PolizaModel implements Serializable {
         this.idCaso = idCaso;
         this.fecProceso = fecProceso;
         this.nroPol = nroPol;
+        this.idPv = idPv;
         this.txtEndoso = txtEndoso;
         this.txtNomSuc = txtNomSuc;
         this.txtAsegurado = txtAsegurado;
@@ -111,6 +113,14 @@ public class PolizaModel implements Serializable {
 
     public void setNroPol(long nroPol) {
         this.nroPol = nroPol;
+    }
+
+    public int getIdPv() {
+        return idPv;
+    }
+
+    public void setIdPv(int idPv) {
+        this.idPv = idPv;
     }
 
     public String getTxtEndoso() {

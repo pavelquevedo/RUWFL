@@ -9,6 +9,7 @@ import com.agsa.ruwfl.model.FirmaModel;
 import com.agsa.ruwfl.model.PolizaModel;
 import com.agsa.ruwfl.service.ApiManager;
 import com.agsa.ruwfl.service.RequestQueueSingleton;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -69,6 +70,7 @@ public class RecieveController {
                     }
                 }
             };
+            postRequest.setRetryPolicy(new DefaultRetryPolicy(webApi.SOCKET_REQUEST_TIMEOUT,1,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             RequestQueueSingleton.getInstance(context).addToRequestQueue(postRequest);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
