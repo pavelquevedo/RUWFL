@@ -21,7 +21,9 @@ import android.widget.Toast;
 import com.agsa.ruwfl.callback.SuccessObject;
 import com.agsa.ruwfl.controller.AuthController;
 
+
 public class LoginActivity extends AppCompatActivity {
+
 
     // UI references.
     private EditText mUsernameView;
