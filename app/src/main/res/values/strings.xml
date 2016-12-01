@@ -1,16 +1,53 @@
 <resources>
-    <string name="app_name">RUWFL</string>
+    <string name="app_name">Recepción Unificada</string>
 
+    <!--General-->
+    <string name="action_search">Buscar</string>
+    <string name="action_select">Seleccionar</string>
+    <string name="action_accept">Aceptar</string>
+    <string name="action_cancel">Cancelar</string>action_refresh
+    <string name="action_refresh">Actualizar</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
+    <string name="prompt_username">Usuario</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in_short">Iniciar Sesión</string>
+
+    <!-- String related to AgentSearch-->
+    <string name="prompt_pattern">Código o Nombre</string>
+
+    <!-- Strings related Poliza -->
+    <string name="label_agent">Agente</string>
+    <string name="column_caso">Caso</string>
+    <string name="column_sucursal">Sucursal</string>
+    <string name="column_ramo">Ramo</string>
+    <string name="column_poliza">Póliza</string>
+    <string name="column_endoso">Endoso</string>
+    <string name="column_pagador">Asegurado</string>
+
+    <!--Dialog-->
+    <string name="dialog_message_poliza">El siguiente intermediario no posee pólizas para procesar.</string>
+    <string name="dialog_info">Información</string>
+
+
+    <!-- Strings Errors -->
+    <string name="error_field_required">El campo es requerido</string>
+    <string name="error_elements_required">Se debe de al menos seleccionar un registro para continuar el proceso.</string>
+
+
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_clean">Limpiar</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+
+    <!-- Drawing -->
+    <string name="start_new">Nuevo</string>
+    <string name="save">Guardar</string>
+
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <!--Url para el servicio de seguridad-->
+    <string name="urlWSRUWFL">http://172.20.4.77/wsRUWFL/</string>
 </resources>
+
