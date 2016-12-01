@@ -92,8 +92,10 @@ public class ReceiveActivity extends AppCompatActivity {
             mDrawnView.setDrawingCacheEnabled(true);
             savePicture(mDrawnView.getDrawingCache(), UUID.randomUUID().toString() + ".jpg");
             mDrawnView.destroyDrawingCache();
-        } else
+        } else {
             Toast.makeText(getApplicationContext(), "No se ha colocado la firma para procesar la petición", Toast.LENGTH_SHORT).show();
+            showProgress(false);
+        }
     }
 
     //Customs Methods
