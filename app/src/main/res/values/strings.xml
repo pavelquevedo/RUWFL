@@ -26,6 +26,7 @@
 
     <!--Dialog-->
     <string name="dialog_message_poliza">El siguiente intermediario no posee pólizas para procesar.</string>
+    <string name="dialog_message_recieve">Documentos entregados.</string>
     <string name="dialog_info">Información</string>
 
 
