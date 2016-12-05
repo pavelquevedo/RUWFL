@@ -55,19 +55,21 @@ public class AgentSearchListViewAdapters extends BaseAdapter {
         AgenteModel mAgenteModel = getItem(position);
         mViewHolderAgentSearch.mTextViewAgentCode.setText(mAgenteModel.getmKey());
         mViewHolderAgentSearch.mTextViewAgentName.setText(mAgenteModel.getTxtChequeANom());
+        mViewHolderAgentSearch.mTextViewAgentTickets.setText(String.valueOf(mAgenteModel.getTickets()));
 
         return convertView;
     }
 
 
     public static class ViewHolderAgentSearch {
-        public TextView mTextViewAgentCode, mTextViewAgentName;
+        public TextView mTextViewAgentCode, mTextViewAgentName, mTextViewAgentTickets;
         public Button mButtonSelect;
 
         public ViewHolderAgentSearch(View view) {
             //TextView
             mTextViewAgentName = (TextView) view.findViewById(R.id.text_item_agent_search_name);
             mTextViewAgentCode = (TextView) view.findViewById(R.id.text_item_agent_search_code);
+            mTextViewAgentTickets = (TextView)view.findViewById(R.id.text_item_agent_search_ticket);
             //Button
             mButtonSelect = (Button) view.findViewById(R.id.button_item_agent_search_select);
         }
