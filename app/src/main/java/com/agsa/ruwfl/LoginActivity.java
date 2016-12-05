@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Object object) {
                             showProgress(false);
-                            Intent myIntent = new Intent(getBaseContext(), AgentSearchActivity.class);
+                            Intent myIntent = new Intent(getBaseContext(), ConexionActivity.class);
                             startActivity(myIntent);
                             finish();
                         }
