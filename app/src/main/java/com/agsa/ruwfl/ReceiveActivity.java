@@ -3,10 +3,12 @@ package com.agsa.ruwfl;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -29,8 +31,10 @@ public class ReceiveActivity extends AppCompatActivity {
     */
     private Button mButtonAccept;
     private Button mButtonNew;
+    private Button mButtonCancel;
     private TextView mTextViewAgente;
     private DrawingView mDrawnView;
+    private AlertDialog mDialog;
 
     private View mProgressView;
     private View mFormView;
@@ -72,6 +76,14 @@ public class ReceiveActivity extends AppCompatActivity {
             }
         });
 
+        mButtonCancel = (Button) findViewById(R.id.button_recieve_cancel);
+        mButtonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancel();
+            }
+        });
+
         mDrawnView = (DrawingView) findViewById(R.id.drawing);
 
         Bundle extras = getIntent().getExtras();
@@ -80,6 +92,14 @@ public class ReceiveActivity extends AppCompatActivity {
             mTextViewAgente.setText(extras.getString("EXTRA_NOMBRE_AGENTE"));
             mPolizaModelList = (List<PolizaModel>) extras.getSerializable("EXTRA_LIST_AGENT");
         }
+
+        prepareAlert();
+    }
+
+    protected void cancel() {
+        Intent mIntent = new Intent(getApplicationContext(), AgentSearchActivity.class);
+        startActivity(mIntent);
+        finish();
     }
 
     //Draw Options
@@ -111,9 +131,8 @@ public class ReceiveActivity extends AppCompatActivity {
                 new SuccessObject() {
                     @Override
                     public void onSuccess(Object object) {
-                        Intent mIntent = new Intent(getApplicationContext(), AgentSearchActivity.class);
-                        startActivity(mIntent);
-                        finish();
+                        showProgress(false);
+                        mDialog.show();
                     }
 
                     @Override
@@ -152,6 +171,21 @@ public class ReceiveActivity extends AppCompatActivity {
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
             mFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
+    }
+
+    protected void prepareAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ReceiveActivity.this);
+        builder.setMessage(R.string.dialog_message_recieve)
+                .setTitle(R.string.dialog_info);
+        builder.setPositiveButton(R.string.action_accept, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent mIntent = new Intent(getApplicationContext(), AgentSearchActivity.class);
+                startActivity(mIntent);
+                finish();
+            }
+        });
+        mDialog = builder.create();
     }
 
     //Request Permisions
