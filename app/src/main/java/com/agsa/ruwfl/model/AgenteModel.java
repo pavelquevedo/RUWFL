@@ -9,14 +9,16 @@ public class AgenteModel {
     private int codAgente;
     private String txtChequeANom;
     private String mKey;
+    private int tickets;
 
     public AgenteModel() {
     }
 
-    public AgenteModel(String txtChequeANom, int codTipoAgente, int codAgente) {
+    public AgenteModel(String txtChequeANom, int codTipoAgente, int codAgente, int tickets) {
         this.txtChequeANom = txtChequeANom;
         this.codTipoAgente = codTipoAgente;
         this.codAgente = codAgente;
+        this.tickets = tickets;
     }
 
     public int getCodTipoAgente() {
@@ -45,5 +47,13 @@ public class AgenteModel {
 
     public String getmKey() {
         return String.valueOf(codTipoAgente) + "-" + String.valueOf(codAgente);
+    }
+
+    public int getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(int tickets) {
+        this.tickets = tickets;
     }
 }
