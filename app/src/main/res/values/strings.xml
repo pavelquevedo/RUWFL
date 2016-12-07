@@ -2,6 +2,8 @@
     <string name="app_name">Recepción Unificada</string>
 
     <!--General-->
+    <string name="action_config">Configurar</string>
+    <string name="prompt_conexion">URL</string>
     <string name="action_search">Buscar</string>
     <string name="action_select">Seleccionar</string>
     <string name="action_accept">Aceptar</string>
@@ -26,6 +28,8 @@
 
     <!--Dialog-->
     <string name="dialog_message_poliza">El siguiente intermediario no posee pólizas para procesar.</string>
+    <string name="dialog_setting_title">Configuración</string>
+
     <string name="dialog_message_recieve">Documentos entregados.</string>
     <string name="dialog_info">Información</string>
 

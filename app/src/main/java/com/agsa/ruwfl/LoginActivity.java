@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.agsa.ruwfl.callback.SuccessObject;
 import com.agsa.ruwfl.controller.AuthController;
+import com.agsa.ruwfl.seguridad.Token;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -35,6 +36,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if (Token.getURL(getApplicationContext()) == "")
+            Token.setURL(getApplicationContext(), getResources().getString(R.string.urlWSRUWFL));
 
         mUsernameView = (EditText) findViewById(R.id.editText_login_username);
 
@@ -112,6 +116,10 @@ public class LoginActivity extends AppCompatActivity {
                             showProgress(false);
                             if (object != null)
                                 Toast.makeText(getApplicationContext(), object.toString(), Toast.LENGTH_LONG).show();
+                            else {
+                                Toast.makeText(getApplicationContext(), "Intente de nuevo, por favor.", Toast.LENGTH_SHORT).show();
+                                Token.setURL(getApplicationContext(), getResources().getString(R.string.urlWSRUWFL));
+                            }
                         }
                     });
         }
