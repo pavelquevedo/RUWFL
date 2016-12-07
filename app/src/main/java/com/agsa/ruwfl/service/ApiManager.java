@@ -3,6 +3,7 @@ package com.agsa.ruwfl.service;
 import android.content.Context;
 
 import com.agsa.ruwfl.R;
+import com.agsa.ruwfl.seguridad.Token;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -32,7 +33,7 @@ public class ApiManager {
 
     public ApiManager(Context context) {
         this.context = context;
-        urlWS = this.context.getResources().getString(R.string.urlWSRUWFL);
+        urlWS = Token.getURL(context);// this.context.getResources().getString(R.string.urlWSRUWFL);
     }
 
     public VolleyError parseNetworkError(VolleyError volleyError) {

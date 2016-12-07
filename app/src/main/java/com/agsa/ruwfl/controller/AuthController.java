@@ -66,6 +66,7 @@ public class AuthController {
             public void OnSuccess(JSONObject response) {
                 try {
                     Token.setToken(context, response.getString("token"));
+                    Token.setEsAdmin(context, Boolean.valueOf(response.getString("isAdmin")));
                     callback.onSuccess(response.getString("token"));
                 } catch (JSONException e) {
                     e.printStackTrace();

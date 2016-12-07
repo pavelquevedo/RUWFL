@@ -17,15 +17,19 @@ import android.widget.Toast;
 import com.agsa.ruwfl.adapters.AgentSearchListViewAdapters;
 import com.agsa.ruwfl.callback.SuccessArray;
 import com.agsa.ruwfl.controller.AgenteController;
+import com.agsa.ruwfl.fragment.SettingsDialog;
 import com.agsa.ruwfl.model.AgenteModel;
+import com.agsa.ruwfl.seguridad.Token;
 
+import java.net.URL;
 import java.util.List;
 
-public class AgentSearchActivity extends AppCompatActivity {
+public class AgentSearchActivity extends AppCompatActivity implements SettingsDialog.OnSaveSettings {
     private List<AgenteModel> mAgenteModelList;
     private View mProgressView;
     private View mSearchAgentFormView;
     private ListView mListViewAgentes;
+    private Button mButtonConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +44,27 @@ public class AgentSearchActivity extends AppCompatActivity {
             }
         });
 
+        if (Token.getEsAdmin(getApplicationContext())) {
+            mButtonConfig = (Button) findViewById(R.id.button_agent_search_conf);
+            mButtonConfig.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    openDialogSetting();
+                }
+            });
+            mButtonConfig.setVisibility(View.VISIBLE);
+        }
+
         mListViewAgentes = (ListView) findViewById(R.id.listview_agent_search);
 
         mSearchAgentFormView = findViewById(R.id.form_search_agent);
         mProgressView = findViewById(R.id.progress_search_agent);
+    }
+
+    public void openDialogSetting(){
+        SettingsDialog dialog = SettingsDialog.newInstance(Token.getURL(getApplicationContext()));
+        dialog.show(getFragmentManager(),"");
+
     }
 
     public void searchAgent() {
@@ -127,5 +148,10 @@ public class AgentSearchActivity extends AppCompatActivity {
         mIntent.putExtra("EXTRA_CODIGO_AGENTE", itemHolderAgentSearch.mTextViewAgentCode.getText().toString());
         mIntent.putExtra("EXTRA_NOMBRE_AGENTE", itemHolderAgentSearch.mTextViewAgentName.getText().toString());
         startActivity(mIntent);
+    }
+
+    @Override
+    public void onSave(String url) {
+        Toast.makeText(getApplicationContext(), url, Toast.LENGTH_SHORT).show();
     }
 }

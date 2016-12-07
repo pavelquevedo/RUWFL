@@ -77,10 +77,10 @@ public class ConexionActivity extends AppCompatActivity {
         AuthController.ObtenerToken(String.valueOf(mData.getIntCodConexion()), getApplicationContext(), new SuccessObject() {
             @Override
             public void onSuccess(Object object) {
-                showProgress(false);
                 Intent myIntent = new Intent(getBaseContext(), AgentSearchActivity.class);
                 startActivity(myIntent);
                 finish();
+                //showProgress(false);
             }
 
             @Override
